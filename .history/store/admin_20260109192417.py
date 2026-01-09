@@ -4,15 +4,14 @@ from store.models import Address, Cart, CartItem, Collection, Customer, Order, O
 
 # Register your models here.
 class PromotionAdmin(admin.ModelAdmin):
-    fields = ('description', 'discount')
+    class Meta:
+        fields = ('description', 'discount')
         
         
 class AddressAdmin(admin.ModelAdmin):
-    fields = ('street', 'city', 'zip', 'customer')
-    list_display = ('street', 'city', 'zip', 'customer')
-        
-    def __str__(self):
-        return super().__str__()
+    class Meta:
+        fields = ('street', 'city', 'zip', 'customer')
+        list_display = ('street', 'city', 'zip', 'customer')
         
 
 admin.site.register(Promotion, PromotionAdmin)

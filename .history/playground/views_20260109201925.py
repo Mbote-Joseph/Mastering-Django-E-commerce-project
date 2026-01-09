@@ -18,7 +18,4 @@ def say_hello(request):
     # - Transform
     # - send email
     query_set = Product.objects.all()
-    
-    for product in query_set:
-        print(product)
     return render(request, 'home.html', {'name': 'Joseph'})

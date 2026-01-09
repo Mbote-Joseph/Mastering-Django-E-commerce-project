@@ -9,7 +9,7 @@ class PromotionAdmin(admin.ModelAdmin):
         
 class AddressAdmin(admin.ModelAdmin):
     fields = ('street', 'city', 'zip', 'customer')
-    list_display = ('street', 'city', 'zip', 'customer')
+    list_display = ('street', 'city', 'zip', 'customer.first_name')
         
     def __str__(self):
         return super().__str__()

@@ -4,7 +4,8 @@ from store.models import Address, Cart, CartItem, Collection, Customer, Order, O
 
 # Register your models here.
 class PromotionAdmin(admin.ModelAdmin):
-    fields = ('description', 'discount')
+    class Meta:
+        fields = ('description', 'discount')
         
         
 class AddressAdmin(admin.ModelAdmin):

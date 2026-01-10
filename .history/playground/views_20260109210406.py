@@ -19,7 +19,7 @@ def say_hello(request):
     # - send email
     query_set = Product.objects.all()
     # complex query
-    # query_set.filter().filter().order_by() 
+    query_set.filter().filter().order_by() 
     # query_set[0:5]
     # for product in query_set:
         # print(product)

@@ -46,7 +46,7 @@ class Customer(models.Model):
     birth_date = models.DateField(null=True)
     membership = models.CharField(max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
     
-    def __str__(self) -> str:
+    def __str__(self):
        return f"{self.first_name} {self.last_name}"
    
     
@@ -65,7 +65,7 @@ class Order(models.Model):
     payment_status = models.CharField(max_length=1, choices=PAYMENT_OPTIONS, default=PAYMENT_PENDING)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
     
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.id}"
     
 class OrderItem(models.Model):
@@ -74,22 +74,19 @@ class OrderItem(models.Model):
     quantity = models.PositiveSmallIntegerField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     
-    def __str__(self) -> str:
-        return self.id
-    
 class Address(models.Model):
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     zip = models.CharField(max_length=10, null=True)
     customer = models.OneToOneField(Customer, on_delete=models.CASCADE, primary_key=True)
     
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.street} {self.city} {self.zip}"
     
 class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.id}"
 
 class CartItem(models.Model):
@@ -97,5 +94,5 @@ class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField()
     
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.cart} - {self.product} - {self.quantity}"

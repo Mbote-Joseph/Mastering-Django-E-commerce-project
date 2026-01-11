@@ -29,7 +29,7 @@ class ProductAdmin(admin.ModelAdmin):
     
     @admin.display(ordering='inventory')
     def inventory_status(self, product):
-        if product.inventory < 150:
+        if product.inventory < 100:
             return f"Low"
         else:
             return f"OK"

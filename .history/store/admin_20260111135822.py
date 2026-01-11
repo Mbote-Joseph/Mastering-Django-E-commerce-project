@@ -22,14 +22,13 @@ class CustomerAdmin(admin.ModelAdmin):
     list_per_page = 25
     
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'description', 'unit_price', 'inventory','inventory_status', 'collection', )
+    list_display = ('title', 'slug', 'description', 'unit_price', 'inventory_status', 'collection', )
     product = Product.objects.all()
     list_per_page = 10
     
     
-    @admin.display(ordering='inventory')
     def inventory_status(self, product):
-        if product.inventory < 150:
+        if product.inventory < 90:
             return f"Low"
         else:
             return f"OK"

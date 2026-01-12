@@ -43,25 +43,13 @@ class ProductAdmin(admin.ModelAdmin):
         
         
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['order_display', 'placed_at','payment_status', 'customer']
-    list_editable = ['payment_status']
-    
-    order = Order.objects.all()
-    
-    def order_display(self, order):
-        return f"StoreFront-{order.id}"
-    
-class CollectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'featured_product',]
-    
-    # def product_count(self, collection):
-    #     return collection.product_count
+    list_display = ['id', 'payment_status', 'customer']
 
 admin.site.register(Promotion, PromotionAdmin)
-admin.site.register(Collection, CollectionAdmin)
+admin.site.register(Collection)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Customer, CustomerAdmin)
-admin.site.register(Order, OrderAdmin)
+admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Cart)

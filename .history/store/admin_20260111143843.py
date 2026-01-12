@@ -52,10 +52,7 @@ class OrderAdmin(admin.ModelAdmin):
         return f"StoreFront-{order.id}"
     
 class CollectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'featured_product',]
-    
-    # def product_count(self, collection):
-    #     return collection.product_count
+    list_display = ['title', 'featured_product']
 
 admin.site.register(Promotion, PromotionAdmin)
 admin.site.register(Collection, CollectionAdmin)

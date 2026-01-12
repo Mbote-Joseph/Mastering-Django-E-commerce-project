@@ -22,7 +22,7 @@ class CustomerAdmin(admin.ModelAdmin):
     list_per_page = 25
     
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'description', 'unit_price', 'inventory','inventory_status', 'collection', )
+    list_display = ('title', 'slug', 'description', 'unit_price', 'inventory','counted_inventory','inventory_status', 'collection', )
     list_editable = ['unit_price',]
     product = Product.objects.all()
     list_per_page = 10
@@ -41,27 +41,12 @@ class ProductAdmin(admin.ModelAdmin):
     # def inventory_variance(self, product):
     #     return product.inventory - self.counted_inventory
         
-        
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ['order_display', 'placed_at','payment_status', 'customer']
-    list_editable = ['payment_status']
-    
-    order = Order.objects.all()
-    
-    def order_display(self, order):
-        return f"StoreFront-{order.id}"
-    
-class CollectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'featured_product',]
-    
-    # def product_count(self, collection):
-    #     return collection.product_count
 
 admin.site.register(Promotion, PromotionAdmin)
-admin.site.register(Collection, CollectionAdmin)
+admin.site.register(Collection)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Customer, CustomerAdmin)
-admin.site.register(Order, OrderAdmin)
+admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Cart)

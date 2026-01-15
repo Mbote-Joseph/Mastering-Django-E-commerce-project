@@ -21,10 +21,10 @@ class Product(models.Model):
     slug = models.SlugField(default='-')
     description = models.TextField(null=True, blank=True)
     unit_price = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(1)])
-    inventory = models.IntegerField(validators=[MinValueValidator(10)])
+    inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
-    promotions = models.ManyToManyField(Promotion, null=True, blank=True)
+    promotions = models.ManyToManyField(Promotion)
     
     def __str__(self) -> str:
         return f"{self.title}"

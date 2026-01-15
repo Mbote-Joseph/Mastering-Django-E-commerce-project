@@ -3,6 +3,7 @@ from django.db.models import Count
 from django.utils.html import format_html
 from django.urls import reverse
 from django.utils.html import format_html, urlencode
+from rest_framework.fields import SlugField
 from store.models import Address, Cart, CartItem, Collection, Customer, Order, OrderItem, Product, Promotion
 
 
@@ -29,9 +30,8 @@ class CustomerAdmin(admin.ModelAdmin):
     
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {
-        'slug' : ['title']
+        SlugField : ['title']
     }
-    autocomplete_fields = ['collection']
     list_display = ('title', 'slug', 'description', 'unit_price', 'inventory','inventory_status', 'collection', )
     list_editable = ['unit_price',]
     product = Product.objects.all()
@@ -65,7 +65,6 @@ class OrderAdmin(admin.ModelAdmin):
     
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ['title', 'featured_product', 'products_count']
-    search_fields = [ 'title']
     
     @admin.display(ordering='products_count')
     def products_count(self, collection):

@@ -65,7 +65,6 @@ class OrderAdmin(admin.ModelAdmin):
     
 class CollectionAdmin(admin.ModelAdmin):
     list_display = ['title', 'featured_product', 'products_count']
-    search_fields = [ 'title']
     
     @admin.display(ordering='products_count')
     def products_count(self, collection):
